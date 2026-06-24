@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@sales-erp/db": ["packages/db/src"],
+      "@sales-erp/types": ["packages/types/src"],
+      "@sales-erp/ui": ["packages/ui/src"]
+    }
+  }
+}

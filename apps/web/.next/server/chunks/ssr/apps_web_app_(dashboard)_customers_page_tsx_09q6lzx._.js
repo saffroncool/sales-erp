@@ -1,0 +1,3 @@
+module.exports=[28307,a=>{"use strict";var b=a.i(57170),c=a.i(44441);a.s(["default",0,function(){let[a,d]=(0,c.useState)([]);return(0,c.useEffect)(()=>{fetch("http://localhost:4000/api/customers").then(a=>a.json()).then(d)},[]),(0,b.jsxs)("div",{children:[(0,b.jsx)("h3",{className:"text-lg font-semibold mb-4",children:"Customers"}),(0,b.jsx)("ul",{children:a.map(a=>(0,b.jsxs)("li",{className:"py-1",children:[a.name," ",a.email&&`(${a.email})`]},a.id))})]})}])}];
+
+//# sourceMappingURL=apps_web_app_%28dashboard%29_customers_page_tsx_09q6lzx._.js.map

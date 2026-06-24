@@ -1,0 +1,32 @@
+{
+  "name": "@sales-erp/api",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/main.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/main.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "@prisma/client": "*",
+    "@nestjs/common": "*",
+    "@nestjs/core": "*",
+    "@nestjs/platform-express": "*",
+    "class-validator": "*",
+    "class-transformer": "*",
+    "cookie-parser": "*",
+    "compression": "*",
+    "helmet": "*",
+    "reflect-metadata": "*",
+    "rxjs": "*"
+  },
+  "devDependencies": {
+    "ts-node-dev": "*",
+    "typescript": "*",
+    "@types/node": "*",
+    "@types/cookie-parser": "*",
+    "@types/compression": "*",
+    "@types/express": "*"
+  }
+}

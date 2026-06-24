@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  MANAGER
+  SALES
+}
+
+enum CustomerStatus {
+  LEAD
+  ACTIVE
+  INACTIVE
+  LOST
+}
+
+model Team {
+  id    Int     @id @default(autoincrement())
+  name  String
+  users User[]
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  name     String?
+  role     UserRole @default(SALES)
+  teamId   Int?
+  team     Team?    @relation(fields: [teamId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Customer {
+  id        Int             @id @default(autoincrement())
+  name      String
+  status    CustomerStatus  @default(LEAD)
+  email     String?
+  phone     String?
+  contacts  CustomerContact[]
+  notes     CustomerNote[]
+  createdAt DateTime @default(now())
+}
+
+model CustomerContact {
+  id         Int      @id @default(autoincrement())
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId Int
+  name       String
+  email      String?
+  phone      String?
+}
+
+model CustomerNote {
+  id         Int      @id @default(autoincrement())
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId Int
+  content    String
+  createdAt  DateTime @default(now())
+}
+
+model FollowUp {
+  id         Int      @id @default(autoincrement())
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId Int
+  note       String
+  dueAt      DateTime?
+}
+
+model Quote {
+  id        Int         @id @default(autoincrement())
+  customer  Customer    @relation(fields: [customerId], references: [id])
+  customerId Int
+  total     Float       @default(0)
+  items     QuoteItem[]
+  createdAt DateTime @default(now())
+}
+
+model QuoteItem {
+  id       Int    @id @default(autoincrement())
+  quote    Quote  @relation(fields: [quoteId], references: [id])
+  quoteId  Int
+  name     String
+  qty      Int
+  price    Float
+}
+
+model Order {
+  id        Int         @id @default(autoincrement())
+  customer  Customer    @relation(fields: [customerId], references: [id])
+  customerId Int
+  total     Float       @default(0)
+  items     OrderItem[]
+  createdAt DateTime @default(now())
+}
+
+model OrderItem {
+  id      Int   @id @default(autoincrement())
+  order   Order @relation(fields: [orderId], references: [id])
+  orderId Int
+  name    String
+  qty     Int
+  price   Float
+}
+
+model AuditLog {
+  id        Int      @id @default(autoincrement())
+  action    String
+  entity    String
+  entityId  Int?
+  userId    Int?
+  createdAt DateTime @default(now())
+}
+
+model Attachment {
+  id        Int      @id @default(autoincrement())
+  filename  String
+  url       String
+  createdAt DateTime @default(now())
+}

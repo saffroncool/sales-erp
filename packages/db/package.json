@@ -1,0 +1,10 @@
+{
+  "name": "@sales-erp/db",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "private": true,
+  "dependencies": {
+    "@prisma/client": "*",
+    "prisma": "*"
+  }
+}

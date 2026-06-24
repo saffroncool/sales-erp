@@ -1,0 +1,9 @@
+{
+  "name": "@sales-erp/ui",
+  "version": "1.0.0",
+  "private": true,
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  }
+}

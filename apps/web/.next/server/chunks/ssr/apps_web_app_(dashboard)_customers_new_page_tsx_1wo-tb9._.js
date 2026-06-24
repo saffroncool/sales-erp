@@ -1,0 +1,3 @@
+module.exports=[26374,a=>{"use strict";var b=a.i(57170),c=a.i(44441);a.s(["default",0,function(){let[a,d]=(0,c.useState)("");async function e(b){b.preventDefault(),await fetch("http://localhost:4000/api/customers",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:a})}),d(""),alert("Created")}return(0,b.jsxs)("form",{onSubmit:e,className:"max-w-md",children:[(0,b.jsx)("label",{className:"block",children:"Name"}),(0,b.jsx)("input",{value:a,onChange:a=>d(a.target.value),className:"border p-2 mb-2 w-full"}),(0,b.jsx)("button",{className:"px-3 py-1 bg-blue-600 text-white rounded",children:"Create"})]})}])}];
+
+//# sourceMappingURL=apps_web_app_%28dashboard%29_customers_new_page_tsx_1wo-tb9._.js.map
